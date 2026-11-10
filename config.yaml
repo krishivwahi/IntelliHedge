@@ -1,0 +1,32 @@
+# Single source of truth for every experiment parameter.
+sim:                  # MertonJumpEnv kwargs
+  n_steps: 15
+  S0: 100.0
+  mu: 0.05
+  sigma: 0.20
+  lambda_jump: 1.5
+  mu_jump: -0.065
+  sigma_jump: 0.035
+  r: 0.02
+  K_hedge: 98.0
+
+train:
+  epochs: 45          # prototype setting; see eval.epochs_converged
+  lr: 0.010
+
+demo:                 # main.py / app.py quick run
+  n_paths: 1000
+  seed: 42
+
+eval:                 # python -m intellihedge.eval.harness
+  n_train: 20000
+  n_test: 100000
+  test_seed: 1000000  # never overlaps a training seed
+  seeds: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  epochs_converged: 400
+  n_boot: 1000
+
+news:                 # PointInTimeNewsEngine kwargs
+  alpha_ema: 0.35
+  h_thresh: 0.75
+  l_thresh: 0.55

@@ -22,7 +22,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
-from merton_env import bs_put_price_and_delta
+from intellihedge.sim.merton import bs_put_price_and_delta
 
 SEED = 42
 
@@ -87,6 +87,8 @@ def train_and_evaluate_arm(
     K_liability: float = 100.0,   # desk is short an ATM Put (K=100)
     tc_stock:  float = 0.0010,
     tc_put:    float = 0.0045,
+    seed:      int   = SEED,
+    test:      tuple | None = None,   # (S, iv, put_mkt) held-out paths; default = 70/30 split
 ) -> dict:
     """
     Train a DeepHedgingPolicy for one ablation arm and return out-of-sample metrics.
@@ -99,7 +101,12 @@ def train_and_evaluate_arm(
     epochs    : SGD epochs
     lr        : Adam learning rate
     """
-    torch.manual_seed(SEED)
+    torch.manual_seed(seed)
+    if test is None:
+        n_train = int(0.7 * S.shape[0])
+    else:  # train on every path passed in, evaluate on the separate test paths
+        n_train = S.shape[0]
+        S, iv, put_mkt = (np.concatenate(pair) for pair in zip((S, iv, put_mkt), test))
     device = torch.device("cpu")
 
     S_t = torch.tensor(S,       dtype=torch.float32, device=device)
@@ -109,7 +116,6 @@ def train_and_evaluate_arm(
 
     n_total, n_steps_plus = S.shape
     n_steps  = n_steps_plus - 1
-    n_train  = int(0.7 * n_total)
 
     model     = DeepHedgingPolicy(in_dim=9, hidden_dim=48).to(device)
     optimizer = optim.Adam(model.parameters(), lr=lr)
@@ -195,6 +201,7 @@ def train_and_evaluate_arm(
         "max_loss":  max_dd,
         "turnover":  float(test_turn.mean().item()),
         "pnl_dist":  pnl_np,
+        "loss":      loss_np,
         "put_trace": put_trace,
     }
 
@@ -209,6 +216,8 @@ def run_causal_ablation(
     Q_real:   np.ndarray,
     epochs:   int = 45,
     lr:       float = 0.010,
+    seed:     int = SEED,
+    test:     tuple | None = None,
 ) -> dict:
     """
     Run all four ablation arms and return a results dict.
@@ -220,7 +229,7 @@ def run_causal_ablation(
     C  Shuffled-News Placebo  : Q = temporally permuted (breaks causal ordering)
     D  Latency-Stressed       : Q = 1-step delayed (Arm D per roadmap)
     """
-    rng = np.random.default_rng(SEED)
+    rng = np.random.default_rng(seed)
 
     n_steps = S.shape[1] - 1
 
@@ -245,7 +254,7 @@ def run_causal_ablation(
         ("Arm D: Latency-Stressed (1-step)",  Q_delayed),
     ]:
         print(f"  Training {arm_name} ...", end="", flush=True)
-        res = train_and_evaluate_arm(arm_name, S, iv, put_mkt, Q_mat, epochs=epochs, lr=lr)
+        res = train_and_evaluate_arm(arm_name, S, iv, put_mkt, Q_mat, epochs=epochs, lr=lr, seed=seed, test=test)
         results[arm_name] = res
         print(f"  CVaR-99 = {res['cvar_99']:.3f}")
 

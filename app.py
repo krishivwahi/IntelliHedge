@@ -20,11 +20,13 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-from news_regime import PointInTimeNewsEngine, build_crisis_news_stream
-from merton_env  import MertonJumpEnv
-from deep_hedger import run_causal_ablation
+from intellihedge.news.regime import PointInTimeNewsEngine, build_crisis_news_stream
+from intellihedge.sim.merton import MertonJumpEnv
+from intellihedge.hedge.policy import run_causal_ablation
+from intellihedge import load_config
 
-SEED = 42
+CFG = load_config()
+SEED = CFG["demo"]["seed"]
 
 
 # -------------------------------------------------------------------------
@@ -103,7 +105,7 @@ def _compute(h_thresh, l_thresh, alpha_ema, tc_stock, tc_put, n_epochs, _trigger
     Q_real = np.stack([r["Q_vec"] for r in regime_logs], axis=0)
 
     # Engine 2
-    env         = MertonJumpEnv(n_paths=1000, n_steps=15, seed=SEED)
+    env         = MertonJumpEnv(n_paths=CFG["demo"]["n_paths"], seed=SEED, **CFG["sim"])
     S, iv, put_mkt = env.simulate()
 
     results = run_causal_ablation(

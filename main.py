@@ -21,11 +21,13 @@ import matplotlib
 matplotlib.use("Agg")   # non-interactive backend — safe for CLI
 import matplotlib.pyplot as plt
 
-from news_regime  import PointInTimeNewsEngine, build_crisis_news_stream
-from merton_env   import MertonJumpEnv
-from deep_hedger  import run_causal_ablation
+from intellihedge.news.regime import PointInTimeNewsEngine, build_crisis_news_stream
+from intellihedge.sim.merton import MertonJumpEnv
+from intellihedge.hedge.policy import run_causal_ablation
+from intellihedge import load_config
 
-SEED = 42
+CFG = load_config()
+SEED = CFG["demo"]["seed"]
 np.random.seed(SEED)
 
 
@@ -47,7 +49,7 @@ def _banner(text: str) -> None:
 # -------------------------------------------------------------------------
 def run_engine1() -> tuple[list, np.ndarray]:
     """Run the news engine over the 15-step stream and return logs + Q_real matrix."""
-    engine = PointInTimeNewsEngine(alpha_ema=0.35, h_thresh=0.75, l_thresh=0.55)
+    engine = PointInTimeNewsEngine(**CFG["news"])
     stream = build_crisis_news_stream()
 
     regime_logs = []
@@ -83,16 +85,10 @@ def run_engine1() -> tuple[list, np.ndarray]:
 # -------------------------------------------------------------------------
 def run_engine2(Q_real: np.ndarray) -> dict:
     """Simulate Merton paths and run 4-arm causal ablation."""
-    env = MertonJumpEnv(
-        n_paths=1000, n_steps=15, S0=100.0,
-        mu=0.05, sigma=0.20,
-        lambda_jump=1.5, mu_jump=-0.065, sigma_jump=0.035,
-        r=0.02, K_hedge=98.0,
-        tau_delay_steps=0, seed=SEED,
-    )
+    env = MertonJumpEnv(n_paths=CFG["demo"]["n_paths"], seed=SEED, **CFG["sim"])
     S, iv, put_mkt = env.simulate()
 
-    results = run_causal_ablation(S, iv, put_mkt, Q_real, epochs=45, lr=0.010)
+    results = run_causal_ablation(S, iv, put_mkt, Q_real, **CFG["train"])
 
     # Pretty-print Engine 2 telemetry table
     print("\n[ENGINE 2] Causal Ablation Benchmark — Out-of-Sample Test Paths")

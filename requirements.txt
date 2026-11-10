@@ -3,4 +3,5 @@ scipy
 torch
 matplotlib
 streamlit
-
+pyyaml
+pytest

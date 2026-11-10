@@ -32,7 +32,7 @@ To eliminate circular reasoning (the "tautology trap" where simulated price jump
 
 ```mermaid
 flowchart TD
-    subgraph Engine1["Engine 1: Perception Engine (news_regime.py)"]
+    subgraph Engine1["Engine 1: Perception Engine (intellihedge/news/regime.py)"]
         Raw["Raw News Stream (timestamped)"] --> Shingle["3-Gram MinHash Deduplication"]
         Shingle --> Embed["Deterministic Vocabulary Embedding"]
         Embed --> DualAnchor["Dual-Anchor Leader-Clustering\nImmutable Origin o_k + EMA Recency r_k(t)"]
@@ -42,7 +42,7 @@ flowchart TD
         Schmitt --> QVec["Point-in-Time Regime Vector Q_t^news"]
     end
 
-    subgraph Engine2["Engine 2: Market Simulator & Policy (merton_env.py & deep_hedger.py)"]
+    subgraph Engine2["Engine 2: Market Simulator & Policy (intellihedge/sim/merton.py & intellihedge/hedge/policy.py)"]
         Merton["Merton Jump-Diffusion dS/S\nExogenous Poisson Jumps + BS Put Pricing"]
         QVec --> Latency["Execution Latency (tau_delay)"]
         Merton --> State["Market State M_t = [S/S0, tau, IV, a_{t-1}, Q_t^news]"]
@@ -54,7 +54,7 @@ flowchart TD
     end
 ```
 
-### 2.1 Engine 1: Point-in-Time Perception (`news_regime.py`)
+### 2.1 Engine 1: Point-in-Time Perception (`intellihedge/news/regime.py`)
 
 1. **3-Gram Shingle Deduplication:** Filters syndicated clone headlines (e.g., wire duplicates from AP/Reuters/CNBC) using Jaccard similarity over word tri-grams:
    $$\text{Jaccard}(A, B) = \frac{|A \cap B|}{|A \cup B|} \ge 0.80 \implies \text{Drop}$$
@@ -82,7 +82,7 @@ flowchart TD
 
 ---
 
-### 2.2 Engine 2: Merton Jump-Diffusion & Option Pricing (`merton_env.py`)
+### 2.2 Engine 2: Merton Jump-Diffusion & Option Pricing (`intellihedge/sim/merton.py`)
 
 Asset price paths follow Merton's jump-diffusion SDE:
 $$\frac{dS_t}{S_{t-}} = (\mu - \lambda \kappa) dt + \sigma dW_t + (J - 1) dN_t$$
@@ -95,7 +95,7 @@ where:
 
 ---
 
-### 2.3 Deep Hedging Policy & Causal Ablation (`deep_hedger.py`)
+### 2.3 Deep Hedging Policy & Causal Ablation (`intellihedge/hedge/policy.py`)
 
 - **State Space:** $M_t = \left[S_t / S_0, \; \tau_t, \; \text{IV}_t, \; a_{t-1}^{\text{stock}}, \; a_{t-1}^{\text{put}}, \; Q_t^{\text{news}}\right]^\top \in \mathbb{R}^9$
 - **Action Space:** $a_t = \left[\delta_t^{\text{stock}} \in [0, 1], \; w_t^{\text{put}} \in [0, 1.25]\right]^\top$
@@ -115,15 +115,19 @@ To isolate causal signal from parameter capacity confounds:
 ## 3. Repository Structure
 
 ```
-d:\IntelliHedge\
-├── news_regime.py             # Engine 1: Point-in-time news perception, dedup, Schmitt trigger
-├── merton_env.py              # Engine 2: Merton Jump-Diffusion simulation, BS put pricing
-├── deep_hedger.py             # Policy network & 4-Arm Causal Ablation runner
-├── main.py                    # Fast CLI benchmark runner (<15s), telemetry tables, dashboard export
-├── app.py                     # Streamlit dark-themed live interactive dashboard
-├── requirements.txt           # Minimal zero-dependency stack
-├── LICENSE                    # MIT License
-└── README.md                  # System documentation & research specification
+IntelliHedge/
+├── config.yaml                # Single source of truth for all experiment parameters
+├── intellihedge/
+│   ├── news/regime.py         # Engine 1: Point-in-time news perception, dedup, Schmitt trigger
+│   ├── sim/merton.py          # Engine 2: Merton Jump-Diffusion simulation, BS put pricing
+│   ├── hedge/policy.py        # Policy network & 4-Arm Causal Ablation runner
+│   └── eval/harness.py        # Multi-seed, 100k-path evaluation with paired bootstrap CIs
+├── tests/                     # pytest
+├── docs/phase0/               # Phase 0 deliverables (results, related work, memos)
+├── main.py                    # Fast CLI demo runner, telemetry tables, dashboard export
+├── app.py                     # Streamlit interactive dashboard
+├── ROADMAP.md                 # 12-month roadmap v2
+└── requirements.txt
 ```
 
 ---
