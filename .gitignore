@@ -5,3 +5,32 @@ __pycache__/
 .idea/
 .DS_Store
 
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Raw and processed datasets
+**/data/raw/
+**/data/processed/
+**/stock_prices/
+**/news_batches/
+**/sip_batches/
+
+# Large data files
+*.parquet
+*.zip
+*.pkl
+
+# Logs
+*.log

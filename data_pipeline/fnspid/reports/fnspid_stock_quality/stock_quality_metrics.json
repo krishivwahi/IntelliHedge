@@ -1,0 +1,21 @@
+{
+  "files_found": 7693,
+  "valid_files": 7693,
+  "failed_files": [],
+  "total_rows": 29677722,
+  "october_rows": 98025,
+  "tickers_with_october_data": 4458,
+  "invalid_dates": 0,
+  "duplicate_dates": 0,
+  "missing_values": {
+    "date": 0,
+    "volume": 257,
+    "open": 257,
+    "high": 257,
+    "low": 257,
+    "close": 257,
+    "adj close": 257
+  },
+  "date_min": "1962-01-02 00:00:00",
+  "date_max": "2023-12-28 00:00:00"
+}

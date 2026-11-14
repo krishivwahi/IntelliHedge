@@ -1,0 +1,109 @@
+{
+  "checked_at_utc": "2026-11-12T16:33:58+00:00",
+  "probes": [
+    {
+      "name": "daily_index_directory_listing",
+      "url": "https://www.sec.gov/Archives/edgar/daily-index/2026/QTR4/index.json",
+      "http_status": 200,
+      "bytes": 18782,
+      "error": "",
+      "top_level_keys": [
+        "directory"
+      ]
+    },
+    {
+      "name": "daily_master_index_first_day",
+      "url": "https://www.sec.gov/Archives/edgar/daily-index/2026/QTR4/master.20261001.idx",
+      "http_status": 200,
+      "bytes": 481733,
+      "error": "",
+      "first_lines": [
+        "Description:           Daily Index of EDGAR Dissemination Feed",
+        "Last Data Received:    Oct 1, 2026",
+        "Comments:              webmaster@sec.gov",
+        "Anonymous FTP:         ftp://ftp.sec.gov/edgar/",
+        " ",
+        "CIK|Company Name|Form Type|Date Filed|File Name",
+        "--------------------------------------------------------------------------------",
+        "1000275|ROYAL BANK OF CANADA|424B2|20261001|edgar/data/1000275/0000950103-26-014887.txt",
+        "1000275|ROYAL BANK OF CANADA|424B2|20261001|edgar/data/1000275/0000950103-26-014893.txt",
+        "1000275|ROYAL BANK OF CANADA|424B2|20261001|edgar/data/1000275/0000950103-26-014894.txt",
+        "1000275|ROYAL BANK OF CANADA|424B2|20261001|edgar/data/1000275/0000950103-26-014897.txt",
+        "1000275|ROYAL BANK OF CANADA|424B2|20261001|edgar/data/1000275/0000950103-26-014899.txt"
+      ]
+    },
+    {
+      "name": "submissions",
+      "url": "https://data.sec.gov/submissions/CIK0000320193.json",
+      "http_status": 200,
+      "bytes": 163787,
+      "error": "",
+      "top_level_keys": [
+        "addresses",
+        "category",
+        "cik",
+        "description",
+        "ein",
+        "entityType",
+        "exchanges",
+        "filings",
+        "fiscalYearEnd",
+        "flags",
+        "formerNames",
+        "insiderTransactionForIssuerExists",
+        "insiderTransactionForOwnerExists",
+        "investorWebsite",
+        "lei",
+        "name",
+        "ownerOrg",
+        "phone",
+        "sic",
+        "sicDescription",
+        "stateOfIncorporation",
+        "stateOfIncorporationDescription",
+        "tickers",
+        "website"
+      ],
+      "recent_columns": [
+        "acceptanceDateTime",
+        "accessionNumber",
+        "act",
+        "core_type",
+        "fileNumber",
+        "filingDate",
+        "filmNumber",
+        "form",
+        "isInlineXBRL",
+        "isXBRL",
+        "isXBRLNumeric",
+        "items",
+        "primaryDocDescription",
+        "primaryDocument",
+        "reportDate",
+        "size"
+      ],
+      "recent_rows": 1001,
+      "extra_pages": 1,
+      "acceptanceDateTime_example": "2026-11-09T22:00:55.000Z"
+    },
+    {
+      "name": "header",
+      "url": "https://www.sec.gov/Archives/edgar/data/1002638/000100263826000087/0001002638-26-000087.hdr.sgml",
+      "http_status": 200,
+      "bytes": 874,
+      "error": "",
+      "head": "<SEC-HEADER>0001002638-26-000087.hdr.sgml : 20261001\n<ACCEPTANCE-DATETIME>20260930184137\n<ACCESSION-NUMBER>0001002638-26-000087\n<TYPE>8-K\n<PUBLIC-DOCUMENT-COUNT>12\n<PERIOD>20260930\n<ITEMS>8.01\n<ITEMS>9.01\n<FILING-DATE>20261001\n<DATE-OF-FILING-DATE-CHANGE>20260930\n<FILER>\n<COMPANY-DATA>\n<CONFORMED-NAME>OPEN TEXT CORP\n<CIK>0001002638\n<ASSIGNED-SIC>7373\n<ORGANIZATION-NAME>06 Technology\n<IRS-NUMBER>980154400\n<STATE-OF-INCORPORATION>A6\n<FISCAL-YEAR-END>0630\n</COMPANY-DATA>\n<FILING-VALUES>\n<FORM-TYPE>8-K\n<ACT>34\n<FILE-NUMBER>000-27544\n<FILM-NUMBER>261428521\n</FILING-VALUES>\n<BUSINESS-ADDRESS>\n<STREE"
+    },
+    {
+      "name": "index_page",
+      "url": "https://www.sec.gov/Archives/edgar/data/1002638/0001002638-26-000087-index.html",
+      "http_status": 200,
+      "bytes": 10068,
+      "error": "",
+      "has_document_table": true
+    }
+  ],
+  "first_day_rows": 5527,
+  "first_day_8k_rows": 259,
+  "total_requests": 5
+}

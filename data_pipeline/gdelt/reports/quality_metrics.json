@@ -1,0 +1,241 @@
+{
+  "period": [
+    "2026-10-01",
+    "2026-10-31"
+  ],
+  "total_records": 2985215,
+  "timestamp_analysis": {
+    "format": "V2.1DATE = 14-digit YYYYMMDDHHMMSS (documented as UTC); GKGRECORDID prefix uses the same stamp",
+    "timezone": "UTC (per GDELT documentation; not verifiable from the data itself)",
+    "record_timestamp": {
+      "missing_pct": 0.0,
+      "bad_format_pct": 0.0,
+      "unparseable_pct": 0.0,
+      "invalid_total_pct": 0.0,
+      "pct_with_nonzero_seconds": 0.0,
+      "pct_minute_not_on_15min_boundary": 0.0,
+      "pct_equal_to_file_slot": 100.0,
+      "interpretation": "If ~100% equal the file slot and 0% have non-zero seconds/off-boundary minutes, V2.1DATE is a 15-minute batch stamp (collection/processing time), NOT an article publication time: precision = 15 minutes, not seconds."
+    },
+    "page_publication_timestamp": {
+      "source_field": "V2EXTRASXML <PAGE_PRECISEPUBTIMESTAMP> (extracted by GDELT from page metadata)",
+      "present_pct": 57.5684,
+      "missing_pct": 42.4316,
+      "bad_format_pct_of_present": 0.0,
+      "unparseable_pct_of_present": 0.0,
+      "pct_with_nonzero_seconds_of_valid": 0.0001
+    },
+    "record_minus_publication_hours": {
+      "n_pairs": 1718541,
+      "pct_negative_(publication_after_record_time)": 3.8493,
+      "percentiles": {
+        "p1": -0.783,
+        "p5": 0.25,
+        "p25": 0.883,
+        "p50": 2.0,
+        "p75": 3.733,
+        "p95": 11.5,
+        "p99": 402.543
+      },
+      "pct_over_24h": 2.6578,
+      "pct_over_7d": 1.184
+    }
+  },
+  "duplicate_analysis": {
+    "gkg_record_id_uniqueness": {
+      "label": "GKGRECORDID",
+      "records_with_key": 2985215,
+      "unique_keys": 2985215,
+      "redundant_records": 0,
+      "duplicate_pct_redundant": 0.0,
+      "records_in_duplicate_groups": 0,
+      "duplicate_pct_in_groups": 0.0,
+      "largest_group": 1,
+      "note": "should be 0 duplicates"
+    },
+    "exact_duplicate_rows_incl_record_id": {
+      "label": "all original fields",
+      "records_with_key": 2985215,
+      "unique_keys": 2985215,
+      "redundant_records": 0,
+      "duplicate_pct_redundant": 0.0,
+      "records_in_duplicate_groups": 0,
+      "duplicate_pct_in_groups": 0.0,
+      "largest_group": 1,
+      "note": "expected 0 because ids are unique"
+    },
+    "exact_duplicate_rows_excl_record_id": {
+      "label": "all original fields except GKGRECORDID",
+      "records_with_key": 2985215,
+      "unique_keys": 2985215,
+      "redundant_records": 0,
+      "duplicate_pct_redundant": 0.0,
+      "records_in_duplicate_groups": 0,
+      "duplicate_pct_in_groups": 0.0,
+      "largest_group": 1,
+      "note": "same document re-emitted with new id"
+    },
+    "duplicate_urls_raw": {
+      "label": "V2DOCUMENTIDENTIFIER (URL)",
+      "records_with_key": 2985215,
+      "unique_keys": 2985215,
+      "redundant_records": 0,
+      "duplicate_pct_redundant": 0.0,
+      "records_in_duplicate_groups": 0,
+      "duplicate_pct_in_groups": 0.0,
+      "largest_group": 1,
+      "note": "records with a URL only"
+    },
+    "duplicate_urls_normalised": {
+      "label": "URL minus scheme/www/tracking params/trailing slash",
+      "records_with_key": 2985215,
+      "unique_keys": 2968633,
+      "redundant_records": 16582,
+      "duplicate_pct_redundant": 0.5555,
+      "records_in_duplicate_groups": 32495,
+      "duplicate_pct_in_groups": 1.0885,
+      "largest_group": 146,
+      "note": "records with a URL only"
+    },
+    "duplicate_headline_same_domain": {
+      "label": "domain + lower-cased PAGE_TITLE",
+      "records_with_key": 2979631,
+      "unique_keys": 2852079,
+      "redundant_records": 127552,
+      "duplicate_pct_redundant": 4.2808,
+      "records_in_duplicate_groups": 184938,
+      "duplicate_pct_in_groups": 6.2067,
+      "largest_group": 5616,
+      "note": "records with a title only; titles exist only if extras carry PAGE_TITLE"
+    },
+    "duplicate_headline_any_domain": {
+      "label": "lower-cased PAGE_TITLE",
+      "records_with_key": 2979631,
+      "unique_keys": 1854411,
+      "redundant_records": 1125220,
+      "duplicate_pct_redundant": 37.7637,
+      "records_in_duplicate_groups": 1328862,
+      "duplicate_pct_in_groups": 44.5982,
+      "largest_group": 5616,
+      "note": "includes legitimate syndication / wire copy"
+    }
+  },
+  "coverage_analysis": {
+    "date_range_observed": [
+      "20261001",
+      "20261031"
+    ],
+    "missing_dates": [],
+    "records_per_day": {
+      "20261001": 119306,
+      "20261002": 108515,
+      "20261003": 60788,
+      "20261004": 49449,
+      "20261005": 98541,
+      "20261006": 110682,
+      "20261007": 113954,
+      "20261008": 117045,
+      "20261009": 108186,
+      "20261010": 64598,
+      "20261011": 52835,
+      "20261012": 96359,
+      "20261013": 115124,
+      "20261014": 118358,
+      "20261015": 116516,
+      "20261016": 110373,
+      "20261017": 62116,
+      "20261018": 53564,
+      "20261019": 101974,
+      "20261020": 113378,
+      "20261021": 117927,
+      "20261022": 118762,
+      "20261023": 111810,
+      "20261024": 63438,
+      "20261025": 53112,
+      "20261026": 101215,
+      "20261027": 117445,
+      "20261028": 120123,
+      "20261029": 119299,
+      "20261030": 108415,
+      "20261031": 62008
+    },
+    "records_per_day_by_record_timestamp": {
+      "20261001": 119306,
+      "20261002": 108515,
+      "20261003": 60788,
+      "20261004": 49449,
+      "20261005": 98541,
+      "20261006": 110682,
+      "20261007": 113954,
+      "20261008": 117045,
+      "20261009": 108186,
+      "20261010": 64598,
+      "20261011": 52835,
+      "20261012": 96359,
+      "20261013": 115124,
+      "20261014": 118358,
+      "20261015": 116516,
+      "20261016": 110373,
+      "20261017": 62116,
+      "20261018": 53564,
+      "20261019": 101974,
+      "20261020": 113378,
+      "20261021": 117927,
+      "20261022": 118762,
+      "20261023": 111810,
+      "20261024": 63438,
+      "20261025": 53112,
+      "20261026": 101215,
+      "20261027": 117445,
+      "20261028": 120123,
+      "20261029": 119299,
+      "20261030": 108415,
+      "20261031": 62008
+    },
+    "expected_15min_slots": 2976,
+    "slots_with_data": 2976,
+    "missing_15min_slots_count": 0,
+    "missing_15min_slots_sample": [],
+    "download_manifest": {
+      "status_counts": {
+        "ok": 2976
+      },
+      "slots_404": [],
+      "slots_failed": []
+    },
+    "unique_source_domains": 12172,
+    "top10_domain_share_pct": 5.2711,
+    "source_collection_distribution": {
+      "WEB": 2985215
+    },
+    "language_distribution": {
+      "eng": 2985215
+    },
+    "language_basis": {
+      "english-stream (inferred from file stream)": 2985215
+    },
+    "field_presence_pct": {
+      "has_V2.1TRANSLATIONINFO": 0.0,
+      "has_headline": 100.0,
+      "has_location_countries": 78.94,
+      "has_organizations": 76.5436,
+      "has_page_pub_ts_raw": 57.5684,
+      "has_persons": 79.1046,
+      "has_themes": 89.4297,
+      "has_tone": 100.0,
+      "has_url": 100.0
+    },
+    "unique_themes": 21298,
+    "unique_persons": 1606729,
+    "unique_organizations": 950621,
+    "unique_countries": 257,
+    "econ_theme_records_note": "see top_themes.csv; ECON_/WB_/TAX_FNCACT themes are the finance-relevant subset",
+    "tone_summary": {
+      "n": 2985215,
+      "mean": -0.7006,
+      "std": 4.0914,
+      "min": -43.478,
+      "max": 35.294
+    }
+  }
+}
