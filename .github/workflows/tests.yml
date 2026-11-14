@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install numpy scipy torch pytest
+          python -m pip install numpy scipy torch -r data_pipeline/fnspid/requirements.txt -r data_pipeline/sec_edgar/requirements.txt pytest
 
       - name: Run tests
         run: python -m pytest -v
