@@ -1,0 +1,9 @@
+.env
+.env.*
+!.env.example
+*.key
+secrets/
+data/raw/**
+data/processed/**
+!data/**/.gitkeep
+__pycache__/

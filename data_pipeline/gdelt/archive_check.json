@@ -1,0 +1,44 @@
+{
+  "checked_at_utc": "2026-11-11T22:11:06+00:00",
+  "target_period": [
+    "2026-10-01",
+    "2026-10-31"
+  ],
+  "lastupdate": {
+    "url": "https://data.gdeltproject.org/gdeltv2/lastupdate.txt",
+    "http_status": 200,
+    "body": "79769 761a383d8bfb44aaa02bd0d905f7bded http://data.gdeltproject.org/gdeltv2/20261111221500.export.CSV.zip\n137922 795b91c5f0a8af2b2e9f7ae7641659e1 http://data.gdeltproject.org/gdeltv2/20261111221500.mentions.CSV.zip\n5789644 94c3ceba1960b43e5f65874d8beae08d http://data.gdeltproject.org/gdeltv2/20261111221500.gkg.csv.zip"
+  },
+  "masterlist_http_status": 200,
+  "masterlist": {
+    "gkg_entries": 403976,
+    "latest_slot": "20261111221500",
+    "entries_inside_target_period": 2976,
+    "expected_inside_period": 2976,
+    "stale_for_target_period": false
+  },
+  "direct_probes": [
+    {
+      "file": "20261001000000.gkg.csv.zip",
+      "url": "https://data.gdeltproject.org/gdeltv2/20261001000000.gkg.csv.zip",
+      "http_status": 200,
+      "content_length": "6117518",
+      "last_modified": "Wed, 30 Sep 2026 23:49:08 GMT"
+    },
+    {
+      "file": "20261001120000.gkg.csv.zip",
+      "url": "https://data.gdeltproject.org/gdeltv2/20261001120000.gkg.csv.zip",
+      "http_status": 200,
+      "content_length": "5333191",
+      "last_modified": "Thu, 01 Oct 2026 11:50:06 GMT"
+    },
+    {
+      "file": "20261031234500.gkg.csv.zip",
+      "url": "https://data.gdeltproject.org/gdeltv2/20261031234500.gkg.csv.zip",
+      "http_status": 200,
+      "content_length": "1807321",
+      "last_modified": "Sat, 31 Oct 2026 23:33:03 GMT"
+    }
+  ],
+  "conclusion": "Direct file URLs for the target period are reachable - use `download` (it generates URLs, ignoring the master list)."
+}

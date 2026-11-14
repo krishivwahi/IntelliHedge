@@ -1,0 +1,57 @@
+[
+  {
+    "ticker": "AAPL",
+    "iex_days": 22,
+    "sip_days": 22,
+    "common_days": 22,
+    "missing_iex_dates": [],
+    "missing_sip_dates": [],
+    "avg_abs_close_difference": 0.090227,
+    "avg_iex_to_sip_volume_ratio": 0.028228,
+    "avg_abs_vwap_difference": 0.250127
+  },
+  {
+    "ticker": "MSFT",
+    "iex_days": 22,
+    "sip_days": 22,
+    "common_days": 22,
+    "missing_iex_dates": [],
+    "missing_sip_dates": [],
+    "avg_abs_close_difference": 0.198864,
+    "avg_iex_to_sip_volume_ratio": 0.031743,
+    "avg_abs_vwap_difference": 0.466939
+  },
+  {
+    "ticker": "NVDA",
+    "iex_days": 22,
+    "sip_days": 22,
+    "common_days": 22,
+    "missing_iex_dates": [],
+    "missing_sip_dates": [],
+    "avg_abs_close_difference": 0.072727,
+    "avg_iex_to_sip_volume_ratio": 0.029655,
+    "avg_abs_vwap_difference": 0.151066
+  },
+  {
+    "ticker": "TSLA",
+    "iex_days": 22,
+    "sip_days": 22,
+    "common_days": 22,
+    "missing_iex_dates": [],
+    "missing_sip_dates": [],
+    "avg_abs_close_difference": 0.074091,
+    "avg_iex_to_sip_volume_ratio": 0.020219,
+    "avg_abs_vwap_difference": 0.200128
+  },
+  {
+    "ticker": "AMZN",
+    "iex_days": 22,
+    "sip_days": 22,
+    "common_days": 22,
+    "missing_iex_dates": [],
+    "missing_sip_dates": [],
+    "avg_abs_close_difference": 0.049773,
+    "avg_iex_to_sip_volume_ratio": 0.034817,
+    "avg_abs_vwap_difference": 0.126087
+  }
+]
