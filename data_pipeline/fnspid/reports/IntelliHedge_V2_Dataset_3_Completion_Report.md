@@ -61,7 +61,7 @@ documented decisions.
   Invalid dates reported by the audit              0
 
 The 1969-12-31 record inspected was a Zacks headline about Montpelier Re
-Holdings Ltd. (MRH). Its timestamp is suspicious and should be treated
+Holdings Ltd.Â (MRH). Its timestamp is suspicious and should be treated
 as an unresolved date anomaly, not silently corrected. The pre-1999
 records included historical Russian-language archive material. The 70
 records from 2024 onward are outside the intended 1999--2023 period.
@@ -81,6 +81,23 @@ Output file:
   Invalid dates                            0
 
 All 31 calendar dates in October were represented.
+
+### Timestamp interpretation — October 2023
+
+A direct inspection of all 89,036 original Date values established:
+
+- Records with a literal UTC suffix: 89,036 (100%).
+- Records without an explicit timezone marker: 0.
+- Distinct time-of-day values: 1.
+- Observed time-of-day: 00:00:00.
+
+These values are explicitly UTC-labelled in the source, but their time component is midnight for every record. They provide daily date-level granularity, not verified intraday article publication times.
+
+The underlying timestamp-generation methodology and publication-time accuracy have not been independently established.
+
+The parser preserves original Date values and generates a separate comparable timestamp. Timezone-naive values in other source files must not be assumed to be UTC without verification.
+
+Do not use these October timestamps for intraday news-to-market event ordering.
 
 ## 5. October news quality findings
 

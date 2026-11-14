@@ -9,8 +9,14 @@ def parse_date_series(values):
     return pd.to_datetime(raw,errors="coerce",utc=True,format="mixed")
 
 def has_explicit_offset(values):
-    raw=values.astype("string")
-    return raw.str.contains(r"(?:Z|[+-]\d{2}:?\d{2})$",case=False,regex=True,na=False)
+    """Detect explicit timezone markers, including UTC/GMT labels."""
+    raw = values.astype("string").str.strip()
+    return raw.str.contains(
+        r"(?:\s(?:UTC|GMT)|Z|[+-]\d{2}:?\d{2})$",
+        case=False,
+        regex=True,
+        na=False
+    )
 
 def normalize_ticker(values):
     return values.astype("string").str.strip().str.upper().replace({"":pd.NA,"NAN":pd.NA,"NONE":pd.NA})

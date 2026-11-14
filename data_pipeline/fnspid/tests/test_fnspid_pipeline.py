@@ -3,7 +3,7 @@ from pathlib import Path
 import pandas as pd
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
-from fnspid_dates import parse_date_series, normalize_ticker, normalize_url
+from fnspid_dates import parse_date_series, has_explicit_offset, normalize_ticker, normalize_url
 from fnspid_parser import process_frame, parse_csv
 from fnspid_quality_analysis import analyse
 
@@ -14,6 +14,15 @@ class TestFNSPID(unittest.TestCase):
     def test_date_parser_handles_iso_and_invalid(self):
         s=parse_date_series(pd.Series(["2023-10-01","2023-10-02T09:30:00-04:00","bad"]))
         self.assertEqual(s.notna().sum(),2)
+    def test_explicit_timezone_marker_detection(self):
+        samples = pd.Series([
+            "2023-10-31 00:00:00 UTC",
+            "2023-10-31 00:00:00",
+            "2023-10-31T00:00:00Z",
+            "2023-10-31T00:00:00+05:30"
+        ])
+        result = has_explicit_offset(samples)
+        self.assertEqual(result.tolist(), [True, False, True, True])
     def test_ticker_normalization(self):
         x=normalize_ticker(pd.Series([" aapl ","msft",None]))
         self.assertEqual(x.iloc[0],"AAPL"); self.assertEqual(x.iloc[1],"MSFT")

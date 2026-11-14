@@ -1,20 +1,47 @@
-# Stage 1 status — GDELT 2.0 GKG
+# Stage 1 Status — GDELT 2.0 GKG
+
+**Collection period:** October 1–31, 2026
+**Status:** Real-data collection and quality evaluation completed.
 
 ## Completion criteria
+
 | Criterion | State |
 |---|---|
-| Collection method verified | **Partly.** Official docs confirm 15-min cadence, master/lastupdate URLs, 2.0 start date (2015-02-19). File-name pattern confirmed only via third-party docs; translingual naming and the 27-column schema are from the codebook as recalled (PDF not fetchable). |
-| October 2026 availability checked | **No — blocked.** Sandbox cannot reach `data.gdeltproject.org` (DNS failure; HTTPS proxy 403; WebFetch allowlist). `check-archive` does this check on your machine. |
-| Collector works | Written and logic-reviewed; **not exercised against the real server**. |
-| Raw / processed separated | Yes (`data/raw`, `data/processed`). |
-| Quality metrics on actual records | **No — no real records obtained.** Code verified on synthetic data only. |
-| Licence assessment | Done, from the official terms page. |
-| Scripts independently executable | Yes (parser and analysis verified end-to-end on synthetic input). |
+| Collection method and archive | Real collection completed locally |
+| October 2026 data | Collected and processed |
+| Collector and parser | Executed on real data |
+| Raw / processed separation | Implemented |
+| Real-data quality analysis | Completed |
+| Real records analysed | 2,985,215 |
+| Date coverage | 31/31 dates |
+| 15-minute slot coverage | 2,976/2,976 |
+| Quality metrics | Computed from real records |
+| Duplicate analysis | Completed |
+| Timestamp analysis | Completed, with publication-time limitations |
+| Licensing assessment | Documented |
+| Synthetic tests | Available as separate test support |
 
-## Needs your local execution
-Run README steps 1→4. Send me `archive_check.json`, `data/raw/download_summary.json` and `reports/quality_metrics.json` and I will finish the report, samples and Stage-1 sign-off.
+## Important timestamp limitation
 
-## Open items to confirm from real data
-1. Whether V2.1DATE equals the file slot (batch time) — decides the point-in-time timestamp you can trust.
-2. How often `PAGE_TITLE` / `PAGE_PRECISEPUBTIMESTAMP` exist in `V2EXTRASXML` (headline and publication-time coverage).
-3. Whether the master list is actually stale for Oct 2026 (direct probes will show).
+GKG V2.1DATE matches the 15-minute file slot and must not be treated as the article publication timestamp.
+
+PAGE_PRECISEPUBTIMESTAMP is available for 57.5684% of records and missing for 42.4316%.
+
+## Remaining considerations
+
+1. Handle publication timestamps and collection timestamps separately.
+2. Preserve the original GDELT timestamps.
+3. Evaluate headline and URL deduplication before downstream feature generation.
+4. Review licensing conditions before external redistribution.
+
+## Evidence
+
+- `reports/DATA_QUALITY_REPORT.md`
+- `reports/quality_report.md`
+- `reports/quality_metrics.json`
+- `docs/DUPLICATE_ANALYSIS.md`
+- `docs/LICENSING_ASSESSMENT.md`
+
+**Stage 1 data collection and evaluation: complete.**
+
+This status describes Teammate B's data work and does not, by itself, indicate that the project-wide G0 gate has passed.
