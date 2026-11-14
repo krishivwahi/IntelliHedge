@@ -1,6 +1,6 @@
-numpy
+﻿numpy
 scipy
 torch
 matplotlib
 streamlit
-
+pandas>=2.0

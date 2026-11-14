@@ -1,0 +1,110 @@
+{
+  "package": "IntelliHedge V2 Stage 3 FNSPID",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 4450,
+      "sha256": "2d254b20a102294f7c4a025e415cd5d82a1f04f9aefdf4e4a89075901d2c72e1"
+    },
+    {
+      "path": "STAGE3_STATUS.md",
+      "bytes": 1298,
+      "sha256": "d45aa07d651d466978b4d511d16b7e29bf668667dddc69593984a30044634d6d"
+    },
+    {
+      "path": "data/raw/manifests/README.txt",
+      "bytes": 109,
+      "sha256": "d080f353658f799a37d38dd899fcfffc4282a0d01f3d36a8f19f432fbcce4df9"
+    },
+    {
+      "path": "data/raw/manifests/source_inventory_reference.json",
+      "bytes": 1298,
+      "sha256": "bf0ffd8c4b83a96acd586525a8022e37409c713f01882413d7a86d76767b6d81"
+    },
+    {
+      "path": "data/samples/README.txt",
+      "bytes": 123,
+      "sha256": "532f1237382aa5f58f78b701d4e05bf758eab4539e86132026b2b2c487d7408f"
+    },
+    {
+      "path": "docs/DATA_LIMITATIONS.md",
+      "bytes": 1065,
+      "sha256": "fa9754bb82a86fd87eaf1ea51b53058adb01d22a49f421f2c9e09e54bb25acc6"
+    },
+    {
+      "path": "docs/DATA_SOURCE_INVENTORY.md",
+      "bytes": 768,
+      "sha256": "2c69eb93d35f5651564d4334335f4d688fd7f8595fea368b8946d5f16a6df4eb"
+    },
+    {
+      "path": "docs/FNSPID_RESEARCH.md",
+      "bytes": 3073,
+      "sha256": "703f5ac03e2f41a080a1bcd94f5db3dc76b3c76375ebbfa6753748be2e8e23dd"
+    },
+    {
+      "path": "docs/LICENSING_ASSESSMENT.md",
+      "bytes": 1445,
+      "sha256": "bca9dd64434e6084a62168db805f7d9e6f5b63f1a0bec6f3b300ac172f92a704"
+    },
+    {
+      "path": "fnspid_collector.py",
+      "bytes": 5439,
+      "sha256": "276c9d5a9a4d52d20f682ccf58dd683458827407c4d5af0047e66a5f3c7d6454"
+    },
+    {
+      "path": "fnspid_dates.py",
+      "bytes": 906,
+      "sha256": "0bee083b217724064ecd1f5bc49c6db289ec351f974f05b9eacbc48fae51177c"
+    },
+    {
+      "path": "fnspid_parser.py",
+      "bytes": 4608,
+      "sha256": "9cdfb64f923c1a112e7a054f4119c6c320bf0ff78207af7c2acaca509c054437"
+    },
+    {
+      "path": "fnspid_quality_analysis.py",
+      "bytes": 4987,
+      "sha256": "acd82849fcb816b46f3255fd5ec6dc5d0786f94ac7cefab99e25aace6c02afd2"
+    },
+    {
+      "path": "reports/COVERAGE_ANALYSIS.md",
+      "bytes": 171,
+      "sha256": "3078dad59e82d3e5868a672fb55ff527ca5e7eda459f33b5b34b479ccf75030f"
+    },
+    {
+      "path": "reports/DATA_QUALITY_REPORT.md",
+      "bytes": 197,
+      "sha256": "2c32d9c4d2dbcf035da1099d0424b765c24ae949563264d5ca7789fd6e2aed57"
+    },
+    {
+      "path": "reports/DUPLICATE_ANALYSIS.md",
+      "bytes": 261,
+      "sha256": "f6e01f3dd7665bf79af9df80020044bc0efa41498ce49c312a2816907991a159"
+    },
+    {
+      "path": "reports/TIMESTAMP_ANALYSIS.md",
+      "bytes": 219,
+      "sha256": "cd9f47523716dc77861d3d38c29068ac7c2cdbbc2baa5c89195957c10a44523d"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 53,
+      "sha256": "bf2485df51887cb292f63ea4c0bae975f3f2bf51df55abca1e14841ea347d16b"
+    },
+    {
+      "path": "tests/TEST_RESULTS.md",
+      "bytes": 397,
+      "sha256": "a720ccdb3bdcfb056f19a952fad9659f26b8e0a4acd950c98cde3d62a37e585c"
+    },
+    {
+      "path": "tests/synthetic_data/news_fixture.csv",
+      "bytes": 394,
+      "sha256": "5f5f12e11f12f963beb9a056292f84216715dc3b4f0f63b8900ed22043e7b5c9"
+    },
+    {
+      "path": "tests/test_pipeline.py",
+      "bytes": 1844,
+      "sha256": "3f6e9a538c570dc90e04f2dbe4b3b6ecb152ef8dd8b10b2be6ce5074027bb030"
+    }
+  ]
+}

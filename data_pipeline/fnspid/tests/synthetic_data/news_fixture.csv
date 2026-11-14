@@ -1,0 +1,5 @@
+Date,Article_title,Stock_symbol,Url,Publisher,Author,Article
+2023-10-02 09:30:00,Alpha beats estimates,AAPL,HTTP://EXAMPLE.COM/a?utm=x,Wire,Alice,Text one
+2023-10-03T10:15:00-04:00,Beta misses guidance,MSFT,https://example.com/b,Wire,Bob,Text two
+2023-10-04,Alpha beats estimates,AAPL,https://example.com/a,Wire,Alice,Text three
+bad-date,Missing date,GOOG,https://example.com/c,Site,,Text four
